@@ -2,6 +2,7 @@
 title: "dplyr"
 output: html_document
 ---
+![](MyPic.jpg)
 
 ## Filtering Columns and Rows
 
