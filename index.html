@@ -562,6 +562,19 @@ library(dplyr)</code></pre>
 ## 63 holmeto01   1945    BSN  9 636
 ## 64 boudrlo01   1948    CLE  9 560
 ## 65 mitchda01   1952    CLE  9 511</code></pre>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,HR)%&gt;%
+  filter(teamID=='PHI' &amp; HR&gt;30 &amp; yearID&lt;=1979 &amp; yearID&gt;=1970)</code></pre>
+<pre><code>##    playerID yearID teamID HR
+## 1 johnsde01   1971    PHI 34
+## 2 schmimi01   1974    PHI 36
+## 3 luzingr01   1975    PHI 34
+## 4 schmimi01   1975    PHI 38
+## 5 schmimi01   1976    PHI 38
+## 6 luzingr01   1977    PHI 39
+## 7 schmimi01   1977    PHI 38
+## 8 luzingr01   1978    PHI 35
+## 9 schmimi01   1979    PHI 45</code></pre>
 </div>
 
 

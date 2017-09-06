@@ -55,6 +55,12 @@ Batting%>%
   arrange(SO)
 ```
 
+```{r}
+Batting%>%
+  select(playerID,yearID,teamID,HR)%>%
+  filter(teamID=='PHI' & HR>30 & yearID<=1979 & yearID>=1970)
+
+```
 
 
 
