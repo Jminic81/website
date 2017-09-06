@@ -19,4 +19,42 @@ Batting%>%
   filter(teamID=='NYA'& yearID==1927)
  
 ```
+#Show all instances where Yankees hit 40+ HRs
+```{r}
+
+Batting%>%
+  filter(HR>=40 & teamID=='NYA')%>%
+  select(playerID,yearID,teamID,HR)
+```
+
+
+#Show all instances where Yankees hit >40 HRs but <60 Strikeouts
+```{r}
+
+Batting%>%
+  select(playerID,yearID, teamID,HR,SO)%>%
+  filter(HR>40 & SO>60)
+```
+
+  
+#Show all instances where players hit >50 in descending order.  The default is ascending order.
+```{r}
+
+Batting%>%
+  select(playerID,yearID,teamID,HR)%>%
+  filter(teamID=='PHI' & HR>30 & yearID<=1979 & yearID>=1970)
+```
+
+  
+#Show all instances of a player striking out less than 10 times and more than 400 at bats.
+
+```{r}
+Batting%>%
+  select(playerID,yearID,teamID,SO, AB)%>%
+  filter(SO<10 & AB>=400)%>%
+  arrange(SO)
+```
+
+
+
 

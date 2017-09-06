@@ -160,6 +160,381 @@ library(dplyr)</code></pre>
 ## 24 thomamy01   1927    NYA  0
 ## 25  weraju01   1927    NYA  1</code></pre>
 </div>
+<div id="show-all-instances-where-yankees-hit-40-hrs" class="section level1">
+<h1>Show all instances where Yankees hit 40+ HRs</h1>
+<pre class="r"><code>Batting%&gt;%
+  filter(HR&gt;=40 &amp; teamID=='NYA')%&gt;%
+  select(playerID,yearID,teamID,HR)</code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1   ruthba01   1920    NYA 54
+## 2   ruthba01   1921    NYA 59
+## 3   ruthba01   1923    NYA 41
+## 4   ruthba01   1924    NYA 46
+## 5   ruthba01   1926    NYA 47
+## 6  gehrilo01   1927    NYA 47
+## 7   ruthba01   1927    NYA 60
+## 8   ruthba01   1928    NYA 54
+## 9   ruthba01   1929    NYA 46
+## 10 gehrilo01   1930    NYA 41
+## 11  ruthba01   1930    NYA 49
+## 12 gehrilo01   1931    NYA 46
+## 13  ruthba01   1931    NYA 46
+## 14  ruthba01   1932    NYA 41
+## 15 gehrilo01   1934    NYA 49
+## 16 gehrilo01   1936    NYA 49
+## 17 dimagjo01   1937    NYA 46
+## 18 mantlmi01   1956    NYA 52
+## 19 mantlmi01   1958    NYA 42
+## 20 mantlmi01   1960    NYA 40
+## 21 mantlmi01   1961    NYA 54
+## 22 marisro01   1961    NYA 61
+## 23 jacksre01   1980    NYA 41
+## 24 martiti02   1997    NYA 44
+## 25 giambja01   2002    NYA 41
+## 26 giambja01   2003    NYA 41
+## 27 rodrial01   2005    NYA 48
+## 28 rodrial01   2007    NYA 54
+## 29 grandcu01   2011    NYA 41
+## 30 grandcu01   2012    NYA 43</code></pre>
+</div>
+<div id="show-all-instances-where-yankees-hit-40-hrs-but-60-strikeouts" class="section level1">
+<h1>Show all instances where Yankees hit &gt;40 HRs but &lt;60 Strikeouts</h1>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID, teamID,HR,SO)%&gt;%
+  filter(HR&gt;40 &amp; SO&gt;60)</code></pre>
+<pre><code>##      playerID yearID teamID HR  SO
+## 1    ruthba01   1920    NYA 54  80
+## 2    ruthba01   1921    NYA 59  81
+## 3    ruthba01   1923    NYA 41  93
+## 4    ruthba01   1924    NYA 46  81
+## 5    ruthba01   1926    NYA 47  76
+## 6   gehrilo01   1927    NYA 47  84
+## 7    ruthba01   1927    NYA 60  89
+## 8    ruthba01   1928    NYA 54  87
+## 9   kleinch01   1929    PHI 43  61
+## 10  gehrilo01   1930    NYA 41  63
+## 11   ruthba01   1930    NYA 49  61
+## 12  wilsoha01   1930    CHN 56  84
+## 13   foxxji01   1932    PHA 58  96
+## 14   ruthba01   1932    NYA 41  62
+## 15   foxxji01   1933    PHA 48  93
+## 16   foxxji01   1934    PHA 44  75
+## 17   foxxji01   1936    BOS 41 119
+## 18   foxxji01   1938    BOS 50  76
+## 19  greenha01   1938    DET 58  92
+## 20  greenha01   1940    DET 41  75
+## 21  greenha01   1946    DET 44  88
+## 22  kinerra01   1947    PIT 51  81
+## 23  kinerra01   1949    PIT 54  61
+## 24  kinerra01   1950    PIT 47  79
+## 25  matheed01   1953    ML1 47  83
+## 26  snidedu01   1953    BRO 42  90
+## 27  zernigu01   1953    PHA 42  79
+## 28  hodgegi01   1954    BRO 42  84
+## 29  sauerha01   1954    CHN 41  68
+## 30  bankser01   1955    CHN 44  72
+## 31  matheed01   1955    ML1 41  98
+## 32  snidedu01   1955    BRO 42  87
+## 33  mantlmi01   1956    NYA 52  99
+## 34  snidedu01   1956    BRO 43 101
+## 35  bankser01   1957    CHN 43  85
+## 36  bankser01   1958    CHN 47  87
+## 37  colavro01   1958    CLE 41  89
+## 38  mantlmi01   1958    NYA 42 120
+## 39  bankser01   1959    CHN 45  72
+## 40  colavro01   1959    CLE 42  86
+## 41  killeha01   1959    WS1 42 116
+## 42  matheed01   1959    ML1 46  71
+## 43  bankser01   1960    CHN 41  69
+## 44   cashno01   1961    DET 41  85
+## 45  cepedor01   1961    SFN 46  91
+## 46  colavro01   1961    DET 45  75
+## 47  gentiji01   1961    BAL 46 106
+## 48  killeha01   1961    MIN 46 109
+## 49  mantlmi01   1961    NYA 54 112
+## 50  marisro01   1961    NYA 61  67
+## 51  aaronha01   1962    ML1 45  73
+## 52  killeha01   1962    MIN 48 142
+## 53   mayswi01   1962    SFN 49  85
+## 54  aaronha01   1963    ML1 44  94
+## 55  killeha01   1963    MIN 45 105
+## 56  mccovwi01   1963    SFN 44 119
+## 57  stuardi01   1963    BOS 42 144
+## 58  killeha01   1964    MIN 49 135
+## 59   mayswi01   1964    SFN 47  72
+## 60   mayswi01   1965    SFN 52  71
+## 61  aaronha01   1966    ATL 44  96
+## 62  robinfr02   1966    BAL 49  90
+## 63  killeha01   1967    MIN 44 111
+## 64  yastrca01   1967    BOS 44  69
+## 65  howarfr01   1968    WS2 44 141
+## 66  howarfr01   1969    WS2 48  96
+## 67  jacksre01   1969    OAK 47 142
+## 68  killeha01   1969    MIN 49  84
+## 69  mccovwi01   1969    SFN 45  66
+## 70  benchjo01   1970    CIN 45 102
+## 71  howarfr01   1970    WS2 44 125
+## 72  killeha01   1970    MIN 41  84
+## 73  willibi01   1970    CHN 42  65
+## 74  stargwi01   1971    PIT 48 154
+## 75  evansda01   1973    ATL 41 104
+## 76  johnsda02   1973    ATL 43  93
+## 77  stargwi01   1973    PIT 44 129
+## 78  burroje01   1977    ATL 41 126
+## 79  fostege01   1977    CIN 52 107
+## 80   riceji01   1978    BOS 46 126
+## 81  kingmda01   1979    CHN 48 131
+## 82  schmimi01   1979    PHI 45 115
+## 83  thomago01   1979    ML4 45 175
+## 84  jacksre01   1980    NYA 41 122
+## 85  oglivbe01   1980    ML4 41  71
+## 86  schmimi01   1980    PHI 48 119
+## 87  armasto01   1984    BOS 43 156
+## 88   bellge02   1987    TOR 47  75
+## 89  dawsoan01   1987    CHN 49 103
+## 90  mcgwima01   1987    OAK 49 131
+## 91  murphda05   1987    ATL 44 136
+## 92  cansejo01   1988    OAK 42 128
+## 93  mitchke01   1989    SFN 47 115
+## 94  fieldce01   1990    DET 51 182
+## 95  cansejo01   1991    OAK 44 152
+## 96  fieldce01   1991    DET 44 151
+## 97  gonzaju03   1992    TEX 43 143
+## 98  mcgwima01   1992    OAK 42 105
+## 99  bondsba01   1993    SFN 46  79
+## 100 gonzaju03   1993    TEX 46  99
+## 101 griffke02   1993    SEA 45  91
+## 102 willima04   1994    SFN 43  87
+## 103 belleal01   1995    CLE 50  80
+## 104 anderbr01   1996    BAL 50 106
+## 105 belleal01   1996    CLE 48  87
+## 106 bondsba01   1996    SFN 42  76
+## 107 buhneja01   1996    SEA 44 159
+## 108 galaran01   1996    COL 47 157
+## 109 gonzaju03   1996    TEX 47  82
+## 110 griffke02   1996    SEA 49 104
+## 111 hundlto01   1996    NYN 41 146
+## 112 mcgwima01   1996    OAK 52 112
+## 113 sheffga01   1996    FLO 42  66
+## 114 vaughmo01   1996    BOS 44 154
+## 115 bagweje01   1997    HOU 43 122
+## 116 galaran01   1997    COL 41 141
+## 117 gonzaju03   1997    TEX 42 107
+## 118 griffke02   1997    SEA 56 121
+## 119 martiti02   1997    NYA 44  75
+## 120 walkela01   1997    COL 49  90
+## 121 belleal01   1998    CHA 49  84
+## 122 cansejo01   1998    TOR 46 159
+## 123 castivi02   1998    COL 46  89
+## 124 galaran01   1998    ATL 44 146
+## 125 gonzaju03   1998    TEX 45 126
+## 126 griffke02   1998    SEA 56 121
+## 127 mcgwima01   1998    SLN 70 155
+## 128 palmera01   1998    BAL 43  91
+## 129 ramirma02   1998    CLE 45 121
+## 130 rodrial01   1998    SEA 42 121
+## 131  sosasa01   1998    CHN 66 171
+## 132 vaughgr01   1998    SDN 50 121
+## 133 bagweje01   1999    HOU 42 127
+## 134 delgaca01   1999    TOR 44 141
+## 135 greensh01   1999    TOR 42 117
+## 136 griffke02   1999    SEA 48 108
+## 137 guerrvl01   1999    MON 42  62
+## 138 jonesch06   1999    ATL 45  94
+## 139 mcgwima01   1999    SLN 65 141
+## 140 palmera01   1999    TEX 47  69
+## 141 ramirma02   1999    CLE 44 131
+## 142 rodrial01   1999    SEA 42 109
+## 143  sosasa01   1999    CHN 63 171
+## 144 vaughgr01   1999    CIN 45 137
+## 145 bagweje01   2000    HOU 47 116
+## 146 batisto01   2000    TOR 41 121
+## 147 bondsba01   2000    SFN 49  77
+## 148 delgaca01   2000    TOR 41 104
+## 149 edmonji01   2000    SLN 42 167
+## 150 giambja01   2000    OAK 43  96
+## 151 glaustr01   2000    ANA 47 163
+## 152 guerrvl01   2000    MON 44  74
+## 153 heltoto01   2000    COL 42  61
+## 154 hidalri01   2000    HOU 44 110
+## 155 rodrial01   2000    SEA 41 121
+## 156 sheffga01   2000    LAN 43  71
+## 157  sosasa01   2000    CHN 50 168
+## 158 thomafr04   2000    CHA 43  94
+## 159 bondsba01   2001    SFN 73  93
+## 160 glaustr01   2001    ANA 41 158
+## 161 gonzalu01   2001    ARI 57  83
+## 162 greensh01   2001    LAN 49 107
+## 163 heltoto01   2001    COL 49 104
+## 164 nevinph01   2001    SDN 41 147
+## 165 palmera01   2001    TEX 47  90
+## 166 ramirma02   2001    BOS 41 147
+## 167 rodrial01   2001    TEX 52 131
+## 168 sexsori01   2001    MIL 45 178
+## 169  sosasa01   2001    CHN 64 153
+## 170 thomeji01   2001    CLE 49 185
+## 171 berkmla01   2002    HOU 42 118
+## 172 giambja01   2002    NYA 41 112
+## 173 greensh01   2002    LAN 42 112
+## 174 palmera01   2002    TEX 43  94
+## 175 rodrial01   2002    TEX 57 122
+## 176  sosasa01   2002    CHN 49 144
+## 177 thomeji01   2002    CLE 52 139
+## 178 delgaca01   2003    TOR 42 137
+## 179 giambja01   2003    NYA 41 140
+## 180 lopezja01   2003    ATL 43  90
+## 181 pujolal01   2003    SLN 43  65
+## 182 rodrial01   2003    TEX 47 126
+## 183 sexsori01   2003    MIL 45 151
+## 184 thomafr04   2003    CHA 42 115
+## 185 thomeji01   2003    PHI 47 182
+## 186 beltrad01   2004    LAN 48  87
+## 187  dunnad01   2004    CIN 46 195
+## 188 edmonji01   2004    SLN 42 150
+## 189 konerpa01   2004    CHA 41 107
+## 190 ortizda01   2004    BOS 41 133
+## 191 ramirma02   2004    BOS 43 124
+## 192 thomeji01   2004    PHI 42 144
+## 193 jonesan01   2005    ATL 51 112
+## 194   leede02   2005    CHN 46 109
+## 195 ortizda01   2005    BOS 47 124
+## 196 pujolal01   2005    SLN 41  65
+## 197 ramirma02   2005    BOS 45 119
+## 198 rodrial01   2005    NYA 48 139
+## 199 teixema01   2005    TEX 43 124
+## 200 beltrca01   2006    NYN 41  99
+## 201 berkmla01   2006    HOU 45 106
+## 202   dyeje01   2006    CHA 44 118
+## 203 hafnetr01   2006    CLE 42 111
+## 204 howarry01   2006    PHI 58 181
+## 205 jonesan01   2006    ATL 41 127
+## 206 ortizda01   2006    BOS 54 117
+## 207 soriaal01   2006    WAS 46 160
+## 208 thomeji01   2006    CHA 42 147
+## 209 fieldpr01   2007    MIL 50 121
+## 210 howarry01   2007    PHI 47 199
+## 211  penaca01   2007    TBA 46 142
+## 212 rodrial01   2007    NYA 54 120
+## 213 howarry01   2008    PHI 48 199
+## 214 fieldpr01   2009    MIL 46 138
+## 215 howarry01   2009    PHI 45 186
+## 216 pujolal01   2009    SLN 47  64
+## 217 reynoma01   2009    ARI 44 223
+## 218 bautijo02   2010    TOR 54 116
+## 219 pujolal01   2010    SLN 42  76
+## 220 bautijo02   2011    TOR 43 111
+## 221 grandcu01   2011    NYA 41 169
+## 222 braunry02   2012    MIL 41 128
+## 223 cabremi01   2012    DET 44  98
+## 224  dunnad01   2012    CHA 41 222
+## 225 encared01   2012    TOR 42  94
+## 226 grandcu01   2012    NYA 43 195
+## 227 hamiljo03   2012    TEX 43 162
+## 228 cabremi01   2013    DET 44  94
+## 229 davisch02   2013    BAL 53 199
+## 230 arenano01   2015    COL 42 110
+## 231  cruzne02   2015    SEA 44 164
+## 232 davisch02   2015    BAL 47 208
+## 233 donaljo02   2015    TOR 41 133
+## 234 harpebr03   2015    WAS 42 131
+## 235 troutmi01   2015    LAA 41 158
+## 236 arenano01   2016    COL 41 103
+## 237 cartech02   2016    MIL 41 206
+## 238  cruzne02   2016    SEA 43 159
+## 239 daviskh01   2016    OAK 42 166
+## 240 doziebr01   2016    MIN 42 138
+## 241 encared01   2016    TOR 42 138
+## 242 trumbma01   2016    BAL 47 170</code></pre>
+</div>
+<div id="show-all-instances-where-players-hit-50-in-descending-order.-the-default-is-ascending-order." class="section level1">
+<h1>Show all instances where players hit &gt;50 in descending order. The default is ascending order.</h1>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,HR)%&gt;%
+  filter(teamID=='PHI' &amp; HR&gt;30 &amp; yearID&lt;=1979 &amp; yearID&gt;=1970)</code></pre>
+<pre><code>##    playerID yearID teamID HR
+## 1 johnsde01   1971    PHI 34
+## 2 schmimi01   1974    PHI 36
+## 3 luzingr01   1975    PHI 34
+## 4 schmimi01   1975    PHI 38
+## 5 schmimi01   1976    PHI 38
+## 6 luzingr01   1977    PHI 39
+## 7 schmimi01   1977    PHI 38
+## 8 luzingr01   1978    PHI 35
+## 9 schmimi01   1979    PHI 45</code></pre>
+</div>
+<div id="show-all-instances-of-a-player-striking-out-less-than-10-times-and-more-than-400-at-bats." class="section level1">
+<h1>Show all instances of a player striking out less than 10 times and more than 400 at bats.</h1>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,yearID,teamID,SO, AB)%&gt;%
+  filter(SO&lt;10 &amp; AB&gt;=400)%&gt;%
+  arrange(SO)</code></pre>
+<pre><code>##     playerID yearID teamID SO  AB
+## 1  doyleja01   1894    NY1  3 422
+## 2  seweljo01   1932    NYA  3 503
+## 3  seweljo01   1925    CLE  4 608
+## 4  seweljo01   1929    CLE  4 578
+## 5  seweljo01   1933    NYA  4 524
+## 6   wardjo01   1893    NY1  5 588
+## 7  holloch01   1922    CHN  5 592
+## 8  mcinnst01   1922    CLE  5 537
+## 9  wanerll01   1936    PIT  5 414
+## 10 wrighge01   1875    BS1  6 408
+## 11 broutda01   1889    BSN  6 485
+## 12 keelewi01   1894    BLN  6 590
+## 13  wardjo01   1894    NY1  6 540
+## 14 quinnjo02   1895    SLN  6 543
+## 15 mcinnst01   1924    BSN  6 581
+## 16 seweljo01   1926    CLE  6 578
+## 17  wardjo01   1889    NY1  7 479
+## 18 crossla01   1893    PHI  7 415
+## 19 quinnjo02   1893    SLN  7 547
+## 20 crossla01   1894    PHI  7 529
+## 21 vaughfa01   1896    CIN  7 433
+## 22 cochrmi01   1927    PHA  7 432
+## 23 seweljo01   1927    CLE  7 569
+## 24 traynpi01   1929    PIT  7 540
+## 25 muelldo01   1956    NY1  7 453
+## 26 connoro01   1885    NY1  8 455
+## 27 glassja01   1887    IN3  8 483
+## 28 glassja01   1890    NY1  8 512
+## 29 donovpa01   1893    PIT  8 499
+## 30 dungasa01   1893    CHN  8 465
+## 31 pinknge01   1893    LS3  8 446
+## 32 brodist01   1894    BLN  8 573
+## 33 quinnjo02   1894    SLN  8 405
+## 34 bierblo01   1895    PIT  8 466
+## 35 crossla01   1895    PHI  8 535
+## 36   hoydu01   1895    CIN  8 429
+## 37 roushed01   1921    CIN  8 418
+## 38 collied01   1923    CHA  8 505
+## 39 collied01   1925    CHA  8 425
+## 40 speaktr01   1927    WS1  8 523
+## 41 cochrmi01   1929    PHA  8 514
+## 42 seweljo01   1931    NYA  8 484
+## 43 wanerll01   1933    PIT  8 500
+## 44 verbaem01   1947    PHI  8 540
+## 45 ansonca01   1883    CHN  9 413
+## 46 broutda01   1887    DTN  9 500
+## 47   hoydu01   1893    WAS  9 564
+## 48 bierblo01   1894    PIT  9 525
+## 49 broutda01   1894    BLN  9 525
+## 50 milledo01   1894    SLN  9 481
+## 51 keelewi01   1896    BLN  9 544
+## 52 mckeaed01   1896    CL4  9 571
+## 53 speaktr01   1918    CLE  9 471
+## 54  dealch01   1921    CHN  9 422
+## 55 mcinnst01   1921    BOS  9 584
+## 56 severha01   1921    SLA  9 472
+## 57  highan01   1926    BSN  9 476
+## 58 summaho01   1926    CLE  9 581
+## 59 seweljo01   1928    CLE  9 588
+## 60  ricesa01   1929    WS1  9 616
+## 61 leachfr01   1931    NY1  9 515
+## 62 busched01   1945    PHA  9 416
+## 63 holmeto01   1945    BSN  9 636
+## 64 boudrlo01   1948    CLE  9 560
+## 65 mitchda01   1952    CLE  9 511</code></pre>
+</div>
 
 
 
