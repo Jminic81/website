@@ -55,6 +55,8 @@ Batting%>%
   arrange(SO)
 ```
 
+#Show all instances of a Philly player with >30 HRs between years 1970 and 1979
+
 ```{r}
 Batting%>%
   select(playerID,yearID,teamID,HR)%>%

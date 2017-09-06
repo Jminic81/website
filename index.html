@@ -562,6 +562,9 @@ library(dplyr)</code></pre>
 ## 63 holmeto01   1945    BSN  9 636
 ## 64 boudrlo01   1948    CLE  9 560
 ## 65 mitchda01   1952    CLE  9 511</code></pre>
+</div>
+<div id="show-all-instances-of-a-philly-player-with-30-hrs-between-years-1970-and-1979" class="section level1">
+<h1>Show all instances of a Philly player with &gt;30 HRs between years 1970 and 1979</h1>
 <pre class="r"><code>Batting%&gt;%
   select(playerID,yearID,teamID,HR)%&gt;%
   filter(teamID=='PHI' &amp; HR&gt;30 &amp; yearID&lt;=1979 &amp; yearID&gt;=1970)</code></pre>
