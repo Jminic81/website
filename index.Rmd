@@ -39,10 +39,10 @@ Batting%>%
   
 #Show all instances where players hit >50 in descending order.  The default is ascending order.
 ```{r}
-
 Batting%>%
   select(playerID,yearID,teamID,HR)%>%
-  filter(teamID=='PHI' & HR>30 & yearID<=1979 & yearID>=1970)
+  filter(HR>50)%>%
+  arrange(desc(HR)) 
 ```
 
   

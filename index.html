@@ -450,17 +450,45 @@ library(dplyr)</code></pre>
 <h1>Show all instances where players hit &gt;50 in descending order. The default is ascending order.</h1>
 <pre class="r"><code>Batting%&gt;%
   select(playerID,yearID,teamID,HR)%&gt;%
-  filter(teamID=='PHI' &amp; HR&gt;30 &amp; yearID&lt;=1979 &amp; yearID&gt;=1970)</code></pre>
-<pre><code>##    playerID yearID teamID HR
-## 1 johnsde01   1971    PHI 34
-## 2 schmimi01   1974    PHI 36
-## 3 luzingr01   1975    PHI 34
-## 4 schmimi01   1975    PHI 38
-## 5 schmimi01   1976    PHI 38
-## 6 luzingr01   1977    PHI 39
-## 7 schmimi01   1977    PHI 38
-## 8 luzingr01   1978    PHI 35
-## 9 schmimi01   1979    PHI 45</code></pre>
+  filter(HR&gt;50)%&gt;%
+  arrange(desc(HR)) </code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1  bondsba01   2001    SFN 73
+## 2  mcgwima01   1998    SLN 70
+## 3   sosasa01   1998    CHN 66
+## 4  mcgwima01   1999    SLN 65
+## 5   sosasa01   2001    CHN 64
+## 6   sosasa01   1999    CHN 63
+## 7  marisro01   1961    NYA 61
+## 8   ruthba01   1927    NYA 60
+## 9   ruthba01   1921    NYA 59
+## 10  foxxji01   1932    PHA 58
+## 11 greenha01   1938    DET 58
+## 12 howarry01   2006    PHI 58
+## 13 gonzalu01   2001    ARI 57
+## 14 rodrial01   2002    TEX 57
+## 15 wilsoha01   1930    CHN 56
+## 16 griffke02   1997    SEA 56
+## 17 griffke02   1998    SEA 56
+## 18  ruthba01   1920    NYA 54
+## 19  ruthba01   1928    NYA 54
+## 20 kinerra01   1949    PIT 54
+## 21 mantlmi01   1961    NYA 54
+## 22 ortizda01   2006    BOS 54
+## 23 rodrial01   2007    NYA 54
+## 24 bautijo02   2010    TOR 54
+## 25 davisch02   2013    BAL 53
+## 26 mantlmi01   1956    NYA 52
+## 27  mayswi01   1965    SFN 52
+## 28 fostege01   1977    CIN 52
+## 29 mcgwima01   1996    OAK 52
+## 30 rodrial01   2001    TEX 52
+## 31 thomeji01   2002    CLE 52
+## 32 kinerra01   1947    PIT 51
+## 33  mizejo01   1947    NY1 51
+## 34  mayswi01   1955    NY1 51
+## 35 fieldce01   1990    DET 51
+## 36 jonesan01   2005    ATL 51</code></pre>
 </div>
 <div id="show-all-instances-of-a-player-striking-out-less-than-10-times-and-more-than-400-at-bats." class="section level1">
 <h1>Show all instances of a player striking out less than 10 times and more than 400 at bats.</h1>
