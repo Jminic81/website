@@ -579,6 +579,89 @@ library(dplyr)</code></pre>
 ## 8 luzingr01   1978    PHI 35
 ## 9 schmimi01   1979    PHI 45</code></pre>
 </div>
+<div id="show-the-number-of-career-homeruns-by-babe-ruth." class="section level1">
+<h1>Show the number of career homeruns by Babe Ruth.</h1>
+<pre class="r"><code>Batting%&gt;%
+  filter(playerID=='ruthba01')%&gt;%
+  group_by(playerID)%&gt;%
+  summarize(career_HR=sum(HR)) </code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   playerID career_HR
+##      &lt;chr&gt;     &lt;int&gt;
+## 1 ruthba01       714</code></pre>
+</div>
+<div id="show-the-players-that-have-had-greater-than-or-equal-to-600-career-homeruns-in-descending-order." class="section level1">
+<h1>Show the players that have had greater than or equal to 600 career homeruns in descending order.</h1>
+<pre class="r"><code>Batting%&gt;%
+  group_by(playerID)%&gt;%
+  summarize(career_HR=sum(HR))%&gt;%
+  filter(career_HR&gt;='600')%&gt;%
+  arrange(desc(career_HR))</code></pre>
+<pre><code>## # A tibble: 1,004 x 2
+##     playerID career_HR
+##        &lt;chr&gt;     &lt;int&gt;
+##  1 bondsba01       762
+##  2 aaronha01       755
+##  3  ruthba01       714
+##  4 rodrial01       696
+##  5  mayswi01       660
+##  6 griffke02       630
+##  7 thomeji01       612
+##  8  sosasa01       609
+##  9 atkinga01        99
+## 10  blumge01        99
+## # ... with 994 more rows</code></pre>
+</div>
+<div id="show-the-players-that-have-had-greater-than-30-average-homerun-season-totals-in-descending-order." class="section level1">
+<h1>Show the players that have had greater than 30 average homerun season totals in descending order.</h1>
+<pre class="r"><code>Batting%&gt;%
+  group_by(playerID)%&gt;%
+  summarize(HRAvg=mean(HR))%&gt;%
+  filter(HRAvg&gt;30)%&gt;%
+  arrange(desc(HRAvg))</code></pre>
+<pre><code>## # A tibble: 13 x 2
+##     playerID    HRAvg
+##        &lt;chr&gt;    &lt;dbl&gt;
+##  1 pujolal01 36.93750
+##  2 bondsba01 34.63636
+##  3 mcgwima01 34.29412
+##  4 kinerra01 33.54545
+##  5 aaronha01 32.82609
+##  6 bryankr01 32.50000
+##  7  ruthba01 32.45455
+##  8  sosasa01 32.05263
+##  9 cabremi01 31.85714
+## 10 belleal01 31.75000
+## 11 rodrial01 31.63636
+## 12 schmimi01 30.44444
+## 13 abreujo02 30.33333</code></pre>
+</div>
+<div id="which-players-since-1970-have-hit-more-than-50-homeruns-at-least-once" class="section level1">
+<h1>Which players since 1970 have hit more than 50 homeruns at least once?</h1>
+<pre class="r"><code>Batting%&gt;%
+  filter(yearID&gt;=1970)%&gt;%
+  group_by(playerID)%&gt;%
+  summarize(maxHR=max(HR))%&gt;%
+  filter(maxHR&gt;50)%&gt;%
+  select(playerID)</code></pre>
+<pre><code>## # A tibble: 14 x 1
+##     playerID
+##        &lt;chr&gt;
+##  1 bautijo02
+##  2 bondsba01
+##  3 davisch02
+##  4 fieldce01
+##  5 fostege01
+##  6 gonzalu01
+##  7 griffke02
+##  8 howarry01
+##  9 jonesan01
+## 10 mcgwima01
+## 11 ortizda01
+## 12 rodrial01
+## 13  sosasa01
+## 14 thomeji01</code></pre>
+</div>
 
 
 

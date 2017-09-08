@@ -64,5 +64,44 @@ Batting%>%
 
 ```
 
+#Show the number of career homeruns by Babe Ruth.
 
+```{r}
+Batting%>%
+  filter(playerID=='ruthba01')%>%
+  group_by(playerID)%>%
+  summarize(career_HR=sum(HR)) 
+```
+
+
+#Show the players that have had greater than or equal to 600 career homeruns in descending order.
+
+```{r}
+Batting%>%
+  group_by(playerID)%>%
+  summarize(career_HR=sum(HR))%>%
+  filter(career_HR>='600')%>%
+  arrange(desc(career_HR))
+```
+
+#Show the players that have had greater than 30 average homerun season totals in descending order.
+
+```{r}
+Batting%>%
+  group_by(playerID)%>%
+  summarize(HRAvg=mean(HR))%>%
+  filter(HRAvg>30)%>%
+  arrange(desc(HRAvg))
+```
+
+#Which players since 1970 have hit more than 50 homeruns at least once?
+
+```{r}
+Batting%>%
+  filter(yearID>=1970)%>%
+  group_by(playerID)%>%
+  summarize(maxHR=max(HR))%>%
+  filter(maxHR>50)%>%
+  select(playerID)
+```
 
