@@ -121,7 +121,7 @@ Batting%>%
   arrange(desc(HRAvg))
 ```
 
-###A final example 
+###A Final Example -----------------------------------------------------------------
 
 Since 1970, which players have hit more than 50 homeruns in a single season at least once?
 
