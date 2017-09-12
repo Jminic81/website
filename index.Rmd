@@ -1,19 +1,26 @@
 ---
-title: "dplyr"
+title: "Using dplyr to manipulate data sets"
 output: html_document
 ---
 ![](MyPic.jpg)
+By Dr. Charles Redmond, documented by Judy Minichelli (pictured)
 
-### Filtering Columns and Rows
+dplyr allows filtering of dataset columns and rows by using "select" and "filter"" commands.  Output can be arranged in ascending or descending order.  Aggregation, or summarizing, can also be performed.  
 
-When using dplyr, you can filter columns and rows by using select and filter.  Let's look at an example using the Lahman baseball database. We first have to load the Lahman and dplyr packages.
+The Lahman baseball database will be used to show examples of filtering, arranging and aggregation.  First, import the Lahman and dplyr packages.
 
 ```{r message=FALSE, warning=FALSE}
 library(Lahman)
 library(dplyr)
 ```
 
-Now suppose we would like to see the homerun totals for the 1927 New York Yankees.  We could run the following code:
+#Filtering Columns and Rows------------------------------------------
+
+The Lahman baseball database can be filtered to display any attributes, for example number of homeruns, for selected teams and years. 
+
+###Example 1
+
+Show homerun totals for the 1927 New York Yankees:
 
 ```{r}
 Batting%>%
@@ -21,7 +28,9 @@ Batting%>%
   filter(teamID=='NYA'& yearID==1927)
 ```
 
-#Show all instances where Yankees hit 40+ HRs
+###Example 2
+
+Show all instances where New York Yankee players hit over 40 homeruns:
 
 ```{r}
 Batting%>%
@@ -29,7 +38,9 @@ Batting%>%
   select(playerID,yearID,teamID,HR)
 ```
 
-#Show all instances where Yankees hit >40 HRs but <60 Strikeouts
+###Example 3
+
+Show all instances where New York Yankee players hit over 40 homeruns but had less than 60 strikeouts:
 
 ```{r}
 Batting%>%
@@ -37,7 +48,13 @@ Batting%>%
   filter(HR>40 & SO>60)
 ```
 
-#Show all instances where players hit >50 in descending order.  The default is ascending order.
+#Arranging------------------------------------------------------------------ 
+
+Results can be displayed in ascending or descending order.  The default is ascending order.
+
+###Example 1
+
+Show all instances where players hit >50 in descending order:  
 
 ```{r}
 Batting%>%
@@ -46,7 +63,9 @@ Batting%>%
   arrange(desc(HR)) 
 ```
 
-#Show all instances of a player striking out less than 10 times and more than 400 at bats.
+###Example 2
+
+Show all instances of a player striking out less than 10 times but had more than 400 at bats:
 
 ```{r}
 Batting%>%
@@ -55,7 +74,9 @@ Batting%>%
   arrange(SO)
 ```
 
-#Show all instances of a Philly player with >30 HRs between years 1970 and 1979
+###Example 3
+
+Show all instances of a Philly player with >30 HRs between years 1970 and 1979:
 
 ```{r}
 Batting%>%
@@ -63,7 +84,11 @@ Batting%>%
   filter(teamID=='PHI' & HR>30 & yearID<=1979 & yearID>=1970)
 ```
 
-#Show the number of career homeruns by Babe Ruth.
+#Aggregating-----------------------------------------------------------------
+
+###Example 1
+
+Show the number of career homeruns by Babe Ruth:
 
 ```{r}
 Batting%>%
@@ -72,13 +97,9 @@ Batting%>%
   summarize(career_HR=sum(HR)) 
 ```
 
-###Arranging 
+###Example 2
 
-##Results can be displayed in ascending or descending order.  The default is ascending order.
-
-#Example 1
-
-Show the players that have had greater than or equal to 600 career homeruns in descending order.
+Show the players that have had greater than or equal to 600 career homeruns in descending order:
 
 ```{r}
 Batting%>%
@@ -88,9 +109,9 @@ Batting%>%
   arrange(desc(career_HR))
 ```
 
-#Example 2
+###Example 3
 
-Show the players that have had greater than 30 average homerun season totals in descending order.
+Show the players that have had greater than 30 average homerun season totals in descending order:
 
 ```{r}
 Batting%>%
@@ -100,9 +121,9 @@ Batting%>%
   arrange(desc(HRAvg))
 ```
 
-#Example 3
+###A final example 
 
-#Which players since 1970 have hit more than 50 homeruns at least once?
+Since 1970, which players have hit more than 50 homeruns in a single season at least once?
 
 ```{r}
 Batting%>%
@@ -113,3 +134,4 @@ Batting%>%
   select(playerID)
 ```
 
+The End!
