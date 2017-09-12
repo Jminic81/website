@@ -4,7 +4,7 @@ output: html_document
 ---
 ![](MyPic.jpg)
 
-## Filtering Columns and Rows
+### Filtering Columns and Rows
 
 When using dplyr, you can filter columns and rows by using select and filter.  Let's look at an example using the Lahman baseball database. We first have to load the Lahman and dplyr packages.
 
@@ -12,32 +12,33 @@ When using dplyr, you can filter columns and rows by using select and filter.  L
 library(Lahman)
 library(dplyr)
 ```
+
 Now suppose we would like to see the homerun totals for the 1927 New York Yankees.  We could run the following code:
+
 ```{r}
 Batting%>%
   select(playerID,yearID,teamID,HR)%>%
   filter(teamID=='NYA'& yearID==1927)
- 
 ```
-#Show all instances where Yankees hit 40+ HRs
-```{r}
 
+#Show all instances where Yankees hit 40+ HRs
+
+```{r}
 Batting%>%
   filter(HR>=40 & teamID=='NYA')%>%
   select(playerID,yearID,teamID,HR)
 ```
 
-
 #Show all instances where Yankees hit >40 HRs but <60 Strikeouts
-```{r}
 
+```{r}
 Batting%>%
   select(playerID,yearID, teamID,HR,SO)%>%
   filter(HR>40 & SO>60)
 ```
 
-  
 #Show all instances where players hit >50 in descending order.  The default is ascending order.
+
 ```{r}
 Batting%>%
   select(playerID,yearID,teamID,HR)%>%
@@ -45,7 +46,6 @@ Batting%>%
   arrange(desc(HR)) 
 ```
 
-  
 #Show all instances of a player striking out less than 10 times and more than 400 at bats.
 
 ```{r}
@@ -61,7 +61,6 @@ Batting%>%
 Batting%>%
   select(playerID,yearID,teamID,HR)%>%
   filter(teamID=='PHI' & HR>30 & yearID<=1979 & yearID>=1970)
-
 ```
 
 #Show the number of career homeruns by Babe Ruth.
@@ -73,8 +72,13 @@ Batting%>%
   summarize(career_HR=sum(HR)) 
 ```
 
+###Arranging 
 
-#Show the players that have had greater than or equal to 600 career homeruns in descending order.
+##Results can be displayed in ascending or descending order.  The default is ascending order.
+
+#Example 1
+
+Show the players that have had greater than or equal to 600 career homeruns in descending order.
 
 ```{r}
 Batting%>%
@@ -84,7 +88,9 @@ Batting%>%
   arrange(desc(career_HR))
 ```
 
-#Show the players that have had greater than 30 average homerun season totals in descending order.
+#Example 2
+
+Show the players that have had greater than 30 average homerun season totals in descending order.
 
 ```{r}
 Batting%>%
@@ -93,6 +99,8 @@ Batting%>%
   filter(HRAvg>30)%>%
   arrange(desc(HRAvg))
 ```
+
+#Example 3
 
 #Which players since 1970 have hit more than 50 homeruns at least once?
 
